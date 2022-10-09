@@ -512,7 +512,7 @@ sleep 1
 clear
 
 #ADDING USER TO WHEEL GROUP
-echo "The list below shows the the users you have on the system"
+echo "The list below shows the list of users"
 sleep 2
 awk -F: '{print $1,$2}' /etc/passwd | tail -3 | sed 's/x/ UserAccount/g'
 sleep 2
