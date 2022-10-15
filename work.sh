@@ -511,7 +511,7 @@ echo "Lets proceed to the next task"
 sleep 1
 clear
 
-#ADDING USER TO WHEEL GROUP
+#ADDING USER TO WHEEL\Sudo GROUP
 echo "The list below shows the list of users"
 sleep 2
 awk -F: '{print $1,$2}' /etc/passwd | tail -3 | sed 's/x/ UserAccount/g'
