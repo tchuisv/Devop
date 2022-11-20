@@ -1,0 +1,17 @@
+!#bin/bash
+code Dockerfile  # creating a dockerfile  
+
+#Docker file content
+    #FROM nginx
+    #Add ./rhino-html /usr/share/nginx/html   
+docker build .  # Use the contant (docker file and html) of this location to build a docker file
+# docker image   >> verify the image created
+docker tag [73e4d0e3f859] rhinoimg # Tag the image ID with a name
+docker run -it -p 80:80 rhinoimg # run the image on the localhost
+
+#push the image to the docker repo
+docker login
+docker tag rhinoimg:latest voltairejojo/rhinoimg #tag the image to your repo
+docker push voltairejojo/rhinoimg 
+
+
