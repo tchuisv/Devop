@@ -1,0 +1,227 @@
+
+
+
+
+
+
+
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: joj-rhino-app
+spec:
+  replicas: 2 # Number of replicas that will be created for this deployment
+  selector:      #connects the variuse file/resources
+    matchLabels:
+      app: joj-rhino-app
+  
+  template:
+    metadata:
+      labels:
+        app: joj-rhino-app
+    spec:
+      containers:
+        - name: joj-first-container
+          image: voltairejojo/rhinoimg # Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80 # The port that the container is running on in the cluster
+
+
+# apiVersion: v1 # Kubernetes API version
+# kind: Service # Kubernetes resource kind we are creating
+# metadata: # Metadata of the resource kind we are creating
+#   name: joj0-rhino-service
+# spec:
+#   selector:
+#     app: joj-rhino-app
+#   ports:
+#     - protocol: "TCP"
+#       port: 80 # The port that the service is running on in the cluster
+#       targetPort: 31000 # The port exposed by the service
+#   type: ClusterIP # type 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# #Resource Imgress
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: joj-ingress
+  
+# spec:
+#   ingressClassName: joj-example
+#   rules:
+#   - http:
+#       paths:
+#       - path: /    #when traffic comes from the root path
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: joj-service
+#             port:
+#               number: 80
+
+
+
+
+
+
+#Other resources
+
+#ingress >>>> for load balancing multiple servicess
+
+# Volume   >>> Persistent volume claim (PVC) for pods backup when they die
+
+# Secrete  >>> storing username and password for K8   >>> security
+
+# config Map >>> storing of resources other password  >>> security
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# apiVersion: apps/v1
+# kind: Deployment # Kubernetes resource kind we are creating
+# metadata:
+#   name: joj-first-deployment
+# spec:
+#   replicas: 1 # Number of replicas that will be created for this deployment
+#   selector:      #connects the variuse file/resources
+#     matchLabels:
+#       app: joj-first-deployment
+  
+#   template:
+#     metadata:
+#       labels:
+#         app: joj-first-deployment
+#     spec:
+#       containers:
+#         - name: joj-first-deployment
+#           image: rhino-img # Image that will be used to containers in the cluster
+#           imagePullPolicy: IfNotPresent
+#           ports:
+#           - name: http
+#             - containerPort: 8080 # The port that the container is running on in the cluster
+
+
+# ---
+
+# apiVersion: v1 # Kubernetes API version
+# kind: Service # Kubernetes resource kind we are creating
+# metadata: # Metadata of the resource kind we are creating
+#   name: joj-service
+# spec:
+#   selector:
+#     app: joj-first-deployment
+#   ports:
+#   - name: http
+#     - protocol: "TCP"
+#       port: 80 # The port that the service is running on in the cluster
+#       targetPort: 8080 # The port exposed by the service
+#   type: NodePort # type 
+
+
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: my-service
+# spec:
+#   selector:
+#     app: my-app
+#   ports:
+#   - name: http
+#     port: 80
+#     targetPort: 8080
+#   type: ClusterIP
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: my-deployment
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: my-app
+#   template:
+#     metadata:
+#       labels:
+#         app: my-app
+#     spec:
+#       containers:
+#       - name: my-container
+#         image: rhino-img
+#         ports:
+#         - name: http
+#           containerPort: 8080
+
+
+
+
+
+
+
+# apiVersion: apps/v1
+# kind: Deployment
+
+# metadata:
+#   name: seconddeployment
+#   #label: 
+#   #  app: newapp-nginx
+#   #  env: UAT
+#   #  team: IT
+
+
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: newapp-nginx
+#       #env: UAT
+#       #team: IT
+#   template: 
+#     labels:
+#       app: newapp-nginx
+#       #env: UAT
+#       #team: IT
+#     spec:
+#       containers:
+#       - image: nginx:latest
+#         name: nginx-test-container
+#         ports: 
+#         - containerPort:80 
+
+
+     
+

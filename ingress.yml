@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: joj-ingress
+  namespace: joj-first
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName:
+  rules:
+    - host: joj-rhino-ingress.com
+      http:
+        paths: 
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: joj-rhino-app
+                port:
+                  number: 80
+
+
+#https://www.youtube.com/watch?v=Gip-Q6AWpcY
